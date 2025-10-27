@@ -1,0 +1,61 @@
+/* Theme Rouge, Noir et Doré */
+:root {
+  /* Couleurs principales */
+  --primary-color: #C41E3A; /* Rouge profond */
+  --secondary-color: #FFD700; /* Doré */
+  --accent-color: #8B0000; /* Rouge foncé */
+  --dark-bg: #0A0A0A; /* Noir profond */
+  --dark-bg-secondary: #1A1A1A; /* Noir secondaire */
+  --dark-bg-tertiary: #2A2A2A; /* Noir tertiaire */
+  
+  /* Couleurs de texte */
+  --text-color: #FFFFFF; /* Blanc */
+  --text-secondary: #E0E0E0; /* Gris clair */
+  --text-muted: #A0A0A0; /* Gris */
+  --text-dark: #0A0A0A; /* Noir pour les backgrounds clairs */
+  
+  /* Dégradés */
+  --gradient-primary: linear-gradient(135deg, #C41E3A 0%, #8B0000 100%);
+  --gradient-secondary: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
+  --gradient-gold-red: linear-gradient(135deg, #FFD700 0%, #C41E3A 100%);
+  --gradient-dark: linear-gradient(135deg, #1A1A1A 0%, #0A0A0A 100%);
+  
+  /* Ombres */
+  --shadow-sm: 0 2px 8px rgba(196, 30, 58, 0.1);
+  --shadow-md: 0 4px 16px rgba(196, 30, 58, 0.2);
+  --shadow-lg: 0 8px 32px rgba(196, 30, 58, 0.3);
+  --shadow-gold: 0 4px 20px rgba(255, 215, 0, 0.3);
+  
+  /* Autres */
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-gold-red);
+}
+
+/* Sélection de texte */
+::selection {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+::-moz-selection {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
