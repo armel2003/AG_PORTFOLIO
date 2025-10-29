@@ -65,10 +65,10 @@ export default {
         },
         {
           id: 3,
-          title: 'Réseau Social',
-          description: 'Plateforme sociale permettant aux utilisateurs de partager du contenu et d\'interagir.',
-          image: '/projects/social.jpg',
-          tags: ['Vue.js', 'Firebase', 'Tailwind'],
+          title: 'Préviously_On',
+          description: `est une application web (ou mobile) connectée à l’API BetaSeries, une plateforme dédiée aux séries et aux films. L’idée est de créer une interface moderne permettant à un utilisateur de retrouver ce qu’il regarde, de suivre sa progression et d’interagir avec ses amis. En gros, c’est un mini-Netflix social couplé à un tracker d’épisodes.`,
+          image: '/projects/Previously.png',
+          tags: ['Vue.js'],
           link: '#'
         },
         {
