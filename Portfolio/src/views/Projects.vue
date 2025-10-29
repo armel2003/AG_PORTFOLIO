@@ -159,7 +159,7 @@ export default {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 2fr));
   gap: 40px;
   max-width: 1400px;
   margin: 0 auto;
