@@ -21,8 +21,8 @@
           <h4>Contact</h4>
           <ul class="footer-links">
             <li><a href="mailto:armel.giordanni@email.com">Email</a></li>
-            <li><a href="https://github.com/your-profile" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-            <li><a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/armel2003" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/armel-njikam-giordanni" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           </ul>
         </div>
       </div>

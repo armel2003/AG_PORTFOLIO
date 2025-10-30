@@ -17,7 +17,7 @@
               <span v-if="!project.image" class="project-icon">{{ project.icon }}</span>
             </div>
             <div class="projects-overlay">
-              <a :href="project.link" target="_blank" class="btn-view">
+              <a :href="project.github || project.link" target="_blank" rel="noopener noreferrer" class="btn-view">
                 Voir le projet
               </a>
             </div>
@@ -53,7 +53,8 @@ export default {
           description: 'Morpion — une application web jouable (Tic‑Tac‑Toe) développée en React. Permet parties à deux joueurs ou contre une IA configurable (choix du marqueur X/O et difficulté).',
           image: '/projects/Morpion.png',
           tags: ['React.js', 'JavaScript', 'CSS'],
-          link: '#'
+          link: '#',
+          github: 'https://github.com/armel2003/Morpion'
         },
         {
           id: 2,
@@ -61,7 +62,8 @@ export default {
           description: 'Consiste à Développer une boutique en ligne spécialisée dans la vente de cartes de monnaies virtuelles et de jeux vidéo dématérialisés, avec une expérience utilisateur fluide, sécurisée et optimisée pour les achats numériques.',
           image: '/projects/Pentakeys.png',
           tags: ['React', 'Symfony 4.x'],
-          link: '#'
+          link: '#',
+          github: 'https://github.com/armel2003/AG_E-commerce'
         },
         {
           id: 3,
@@ -69,7 +71,8 @@ export default {
           description: `est une application web (ou mobile) connectée à l’API BetaSeries, une plateforme dédiée aux séries et aux films. L’idée est de créer une interface moderne permettant à un utilisateur de retrouver ce qu’il regarde, de suivre sa progression et d’interagir avec ses amis. En gros, c’est un mini-Netflix social couplé à un tracker d’épisodes.`,
           image: '/projects/Previously.png',
           tags: ['Vue.js'],
-          link: '#'
+          link: '#',
+          github: 'https://github.com/armel2003/Previously_On'
         },
         {
           id: 4,
@@ -77,7 +80,8 @@ export default {
           description: 'Le projet consiste à développer un serveur IRC (Internet Relay Chat) moderne. L objectif est de permettre à plusieurs utilisateurs de discuter en temps réel via des channels, tout en respectant des contraintes techniques et fonctionnelles précises.',
           image: '/projects/irc.png',
           tags: ['React', 'Express', 'Node.js', 'Socket.io'],
-          link: '#'
+          link: '#',
+          github: 'https://github.com/armel2003/irc'
         },
         {
           id: 5,
@@ -85,7 +89,8 @@ export default {
           description: 'Le project consiste a créer un lecteur multimédia en ligne en React, qui consomme une API locale (fournie via Docker). Le site permettra de naviguer dans une base de données musicale : albums, artistes, genres… et d’écouter des morceaux via un lecteur.',
           image: '/projects/spotify.jpg',
           tags: ['React.js', 'JavaScript', 'API REST', 'Docker', 'JSON'],
-          link: '#'
+          link: '#',
+          github: 'https://github.com/armel2003/spotify'
         },
         {
           id: 6,
@@ -93,7 +98,8 @@ export default {
           description: 'Créer un indexeur de fichiers pour serveurs web HTTP, qui reproduit le comportement de h5ai (un explorateur de fichiers web moderne). L’outil doit permettre de naviguer dans une arborescence de fichiers via une interface web dynamique, avec des fonctionnalités avancées comme le tri, la recherche, les tags, et la visualisation.',
           image: '/projects/h5ai.png',
           tags: ['Node.js', 'Express', 'Python'],
-          link: '#'
+          link: '#',
+          github: 'https://github.com/armel2003/MY_H5AI'
         }
       ]
     }
