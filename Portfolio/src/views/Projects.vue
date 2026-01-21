@@ -49,7 +49,7 @@ export default {
       projects: [
         {
           id: 1,
-          title: 'Morpion',
+          title: 'Morpion-v2',
           description: 'Morpion — une application web jouable (Tic‑Tac‑Toe) développée en React. Permet parties à deux joueurs ou contre une IA configurable (choix du marqueur X/O et difficulté).',
           image: '/projects/Morpion.png',
           tags: ['React.js', 'JavaScript', 'CSS'],
