@@ -1,291 +1,178 @@
 <template>
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="hero-content scroll-reveal">
-        <h1 class="hero-title">
-          Bonjour, je suis <span class="gradient-text">{{ name }}</span>
-        </h1>
-        <h2 class="hero-subtitle">{{ title }}</h2>
-        <p class="hero-description">{{ description }}</p>
-        <div class="hero-buttons">
-          <router-link to="/projects" class="btn btn-primary">
-            Voir mes projets
-          </router-link>
-          <router-link to="/about" class="btn btn-secondary">
-            En savoir plus
-          </router-link>
-        </div>
-      </div>
-      <div class="hero-image scroll-reveal">
-        <div class="image-placeholder">
-          <span class="emoji">👨‍💻</span>
-        </div>
+  <section class="hero">
+    <div class="hero__content">
+  
+      <h1 class="hero__title">
+        <span class="text-gradient">Armel Giordanni</span><br />
+        Développeur Web Junior
+      </h1>
+      <p class="hero__description">
+        Création d'expériences web élégantes, performantes et modernes.
+      </p>
+
+      <div class="hero__buttons">
+        <router-link to="/projects" class="hero__btn hero__btn--primary">
+          Voir mes projets
+        </router-link>
+        <a href="/image/ANG-CV.pdf.pdf" target="_blank" class="hero__btn hero__btn--cv">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Voir mon CV
+        </a>
       </div>
     </div>
   </section>
 </template>
 
-<script>
-export default {
-  name: 'Home',
-  data() {
-    return {
-      name: 'Armel Giordanni',
-      title: 'Développeur Web Full-Stack',
-      description: `Je suis un développeur web passionné par la création de sites et d'applications web modernes.
-                J'aime transformer des idées créatives en réalités numériques performantes et esthétiques.`
-    }
-  },
-  mounted() {
-    this.initScrollReveal();
-  },
-  methods: {
-    initScrollReveal() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
-
-      document.querySelectorAll('.scroll-reveal').forEach(el => {
-        observer.observe(el);
-      });
-    }
-  }
-}
+<script setup>
 </script>
 
 <style scoped>
 .hero {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: var(--gradient-primary);
-  position: relative;
+  justify-content: center;
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  animation: backgroundScroll 20s linear infinite;
-}
-
-@keyframes backgroundScroll {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(60px, 60px);
-  }
-}
-
-.hero .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+.hero__content {
   position: relative;
-  z-index: 1;
+  z-index: 10;
+  max-width: 56rem;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 1.5rem;
 }
 
-.hero-content {
-  color: var(--text-color);
-}
 
-.hero-title {
-  font-size: 3.5rem;
+
+.hero__title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.2;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.025em;
+  animation: fade-in 0.6s ease-out 0.4s forwards;
+  opacity: 0;
 }
 
-.gradient-text {
-  background: var(--gradient-secondary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 3s ease-in-out infinite;
+.hero__description {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 42rem;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  animation: fade-in 0.6s ease-out 0.6s forwards;
+  opacity: 0;
 }
 
-@keyframes shimmer {
-  0%, 100% {
-    filter: brightness(1);
+.hero__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  animation: fade-in 0.6s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+@media (min-width: 640px) {
+  .hero__buttons {
+    flex-direction: row;
   }
-  50% {
-    filter: brightness(1.3);
-  }
 }
 
-.hero-subtitle {
-  font-size: 1.8rem;
+.hero__btn {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 20px;
-  color: var(--secondary-color);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.hero-description {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: var(--text-secondary);
-  line-height: 1.8;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 20px;
-}
-
-.btn {
-  padding: 16px 40px;
-  border-radius: 50px;
-  font-size: 1.05rem;
-  font-weight: 700;
+  border-radius: var(--radius);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
-  transition: all 0.4s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.hero__btn:hover {
+  transform: scale(1.05);
+}
+
+.hero__btn--primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.hero__btn--primary:hover {
+  background-color: hsla(0, 0%, 95%, 0.9);
+  box-shadow: var(--shadow-glow);
+}
+
+.hero__btn--secondary {
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.hero__btn--secondary:hover {
+  background-color: var(--secondary);
+  border-color: hsla(0, 0%, 95%, 0.2);
+}
+
+.hero__btn--cv {
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.hero__btn--cv:hover {
+  background-color: var(--secondary);
+  border-color: hsla(0, 0%, 95%, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero__btn--cv .btn-icon {
+  transition: transform 0.3s ease;
+}
+
+.hero__btn--cv:hover .btn-icon {
+  transform: translateY(2px);
+}
+
+.hero__scroll:hover {
+  color: var(--foreground);
+}
+
+.hero__scroll-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
-.btn-primary {
-  background: var(--gradient-secondary);
-  color: var(--dark-bg);
-  box-shadow: var(--shadow-gold);
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--muted-foreground), transparent);
+  animation: bounce 2s ease-in-out infinite;
 }
 
-.btn-primary:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--text-color);
-  border: 2px solid var(--secondary-color);
-}
-
-.btn-secondary:hover {
-  background: var(--secondary-color);
-  color: var(--dark-bg);
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: var(--shadow-gold);
-}
-
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.image-placeholder {
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg-tertiary) 100%);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  border: 4px solid var(--secondary-color);
-  box-shadow: 0 0 40px rgba(255, 215, 0, 0.4), inset 0 0 40px rgba(196, 30, 58, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.image-placeholder::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, var(--secondary-color), transparent);
-  opacity: 0.1;
-  animation: rotate 4s linear infinite;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
+@media (max-width: 768px) {
+  .hero {
+    min-height: calc(100vh - 60px);
   }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.emoji {
-  font-size: 150px;
-  animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 10px 20px rgba(255, 215, 0, 0.5));
-  position: relative;
-  z-index: 1;
-}
-
-@media (max-width: 968px) {
-  .hero .container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.5rem;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .image-placeholder {
-    width: 300px;
-    height: 300px;
-  }
-
-  .emoji {
-    font-size: 120px;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.2rem;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .image-placeholder {
-    width: 250px;
-    height: 250px;
-  }
-
-  .emoji {
-    font-size: 100px;
+  
+  .hero__scroll {
+    bottom: 1.5rem;
   }
 }
 </style>

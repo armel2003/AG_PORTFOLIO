@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Previously_ON",
+    "description": "Application Vue.js + Flask permettant de générer des résumés d'épisodes automatiquement.",
+    "image": "/images/project1.jpg",
+    "tags": ["Vue.js", "Flask", "API", "UX"]
+  },
+  {
+    "title": "DNA Clicker",
+    "description": "Prototype de jeu React basé sur une mécanique originale et addictive.",
+    "image": "/images/project2.jpg",
+    "tags": ["React", "Game Dev", "UI/UX"]
+  },
+  {
+    "title": "Portfolio V2",
+    "description": "Portfolio sombre, minimaliste et animé, développé avec Vue.js et Vite.",
+    "image": "/images/project3.jpg",
+    "tags": ["Vue.js", "Design", "Animation"]
+  },
+  {
+    "title": "TaskMaster",
+    "description": "Application de gestion de tâches avec interface intuitive et fonctionnalités avancées.",
+    "image": "/images/project4.jpg",
+    "tags": ["Vue.js", "Productivity", "UI"]
+  },
+  {
+    "title": "BlogTech",
+    "description": "Plateforme de blogging tech avec fonctionnalités de publication et de gestion des utilisateurs.",
+    "image": "/images/project5.jpg",
+    "tags": ["Vue.js", "Node.js", "MongoDB"]
+  },
+  {
+    "title": "ShopEase",
+    "description": "Site e-commerce moderne avec intégration de paiement et gestion des stocks.",
+    "image": "/images/project6.jpg",
+    "tags": ["Vue.js", "E-commerce", "Stripe"]
+  }
+]

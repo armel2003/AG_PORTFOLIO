@@ -1,200 +1,167 @@
 <template>
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-brand">
-        <router-link to="/" class="logo">
-          <span class="logo-text">armel giordanni</span>
-        </router-link>
-      </div>
-      
-      <button class="navbar-toggle" @click="toggleMenu" :class="{ active: isMenuOpen }">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="navbar-menu" :class="{ active: isMenuOpen }">
-        <router-link to="/" class="nav-link" @click="closeMenu">Accueil</router-link>
-        <router-link to="/about" class="nav-link" @click="closeMenu">À propos</router-link>
-        <router-link to="/projects" class="nav-link" @click="closeMenu">Projects</router-link>
-        <router-link to="/contact" class="nav-link" @click="closeMenu">Contact</router-link>
-      </div>
+  <header class="navbar">
+    <router-link to="/" class="logo">
+      <span class="logo-text">Armel</span>
+      <span class="logo-dot">.dev</span>
+    </router-link>
+    <nav>
+      <router-link to="/">Accueil</router-link>
+      <router-link to="/projects">Projets</router-link>
+      <router-link to="/about">À propos</router-link>
+      <router-link to="/contact">Contact</router-link>
+    </nav>
+    <div class="navbar__cta">
+      <router-link to="/contact" class="btn-contact">
+        Me contacter
+      </router-link>
     </div>
-  </nav>
+  </header>
 </template>
-
-<script>
-export default {
-  name: 'Navbar',
-  data() {
-    return {
-      isMenuOpen: false
-    }
-  },
-  methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen
-    },
-    closeMenu() {
-      this.isMenuOpen = false
-    }
-  }
-}
-</script>
 
 <style scoped>
 .navbar {
-  background: var(--dark-bg-secondary);
-  border-bottom: 2px solid var(--primary-color);
-  box-shadow: 0 2px 20px rgba(196, 30, 58, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid hsla(0, 0%, 15%, 0.5);
+  background: hsla(0, 0%, 4%, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
+  z-index: 100;
+  transition: all 0.3s ease;
 }
 
-.navbar-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1.2rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar-brand .logo {
+.logo {
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  position: absolute;
+  left: 3rem;
   text-decoration: none;
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo::after {
+  display: none !important;
 }
 
 .logo-text {
-  background: var(--gradient-gold-red);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  transition: var(--transition);
+  color: var(--foreground);
 }
 
-.logo-text:hover {
-  filter: brightness(1.3);
+.logo-dot {
+  color: var(--foreground);
+  opacity: 0.4;
 }
 
-.navbar-toggle {
-  display: none;
-  flex-direction: column;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-}
-
-.navbar-toggle span {
-  width: 28px;
-  height: 3px;
-  background: var(--gradient-gold-red);
-  margin: 4px 0;
-  transition: 0.3s;
-  border-radius: 3px;
-}
-
-.navbar-toggle.active span:nth-child(1) {
-  transform: rotate(-45deg) translate(-6px, 7px);
-  background: var(--secondary-color);
-}
-
-.navbar-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.navbar-toggle.active span:nth-child(3) {
-  transform: rotate(45deg) translate(-6px, -7px);
-  background: var(--secondary-color);
-}
-
-.navbar-menu {
+nav {
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
+  gap: 2rem;
 }
 
-.nav-link {
-  color: var(--text-color);
+nav a {
+  color: var(--muted-foreground);
   text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 600;
-  transition: var(--transition);
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
+  font-size: 0.9375rem;
+  font-weight: 500;
   position: relative;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  transition: color 0.3s ease;
 }
 
-.nav-link::before {
+.navbar__cta {
+  position: absolute;
+  right: 3rem;
+}
+
+.btn-contact {
+  padding: 0.425rem 1rem;
+  margin: 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  background: var(--foreground);
+  color: var(--background);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-contact::after {
+  display: none;
+}
+
+.btn-contact:hover {
+  background: var(--muted-foreground);
+  color: var(--background);
+  transform: translateY(-2px);
+}
+
+.btn-contact.router-link-active {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+a {
+  color: var(--muted-foreground);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 400;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+a::after {
   content: '';
   position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -6px;
+  left: 0;
   width: 0;
-  height: 2px;
-  background: var(--gradient-gold-red);
+  height: 1px;
+  background: var(--foreground);
   transition: width 0.3s ease;
 }
 
-.nav-link:hover {
-  color: var(--secondary-color);
-  background-color: rgba(196, 30, 58, 0.1);
+a:hover {
+  color: var(--foreground);
 }
 
-.nav-link:hover::before {
-  width: 60%;
+a:hover::after {
+  width: 100%;
 }
 
-.nav-link.router-link-active {
-  color: var(--secondary-color);
-  background: rgba(196, 30, 58, 0.15);
-  font-weight: 700;
+.router-link-active {
+  color: var(--foreground);
 }
 
-.nav-link.router-link-active::before {
-  width: 60%;
+.router-link-active::after {
+  width: 100%;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .navbar-toggle {
-    display: flex;
+  .navbar {
+    padding: 1rem 1.5rem;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    position: static;
   }
 
-  .navbar-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 75%;
-    height: 100vh;
-    background: var(--dark-bg);
-    border-left: 2px solid var(--primary-color);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    transition: right 0.4s ease;
-    box-shadow: -10px 0 30px rgba(196, 30, 58, 0.4);
+  .navbar__cta {
+    position: static;
   }
-
-  .navbar-menu.active {
-    right: 0;
-  }
-
-  .nav-link {
-    font-size: 1.5rem;
-    width: 80%;
-    text-align: center;
+  
+  nav {
+    gap: 1.25rem;
+    font-size: 0.8rem;
   }
 }
 </style>

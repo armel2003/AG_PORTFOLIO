@@ -1,56 +1,49 @@
 import emailjs from '@emailjs/browser';
 
-// Initialisation d'EmailJS
 emailjs.init({
-  publicKey: "1wa8D32EYBo9bOWdf",
+    publicKey: "1wa8D32EYBo9bOWdf",
 });
 
-// Fonction pour valider le formulaire
 export function validateForm(formData) {
-  const errors = [];
+    const errors = [];
 
-  if (!formData.name || formData.name.trim().length < 2) {
-    errors.push('Le nom doit contenir au moins 2 caractères');
-  }
+    if (!formData.name || formData.name.trim().length < 2) {
+        errors.push('Name is required.');
+    }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!formData.email || !emailRegex.test(formData.email)) {
-    errors.push('Veuillez entrer une adresse email valide');
-  }
+    const emailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (!formData.subject || formData.subject.trim().length < 3) {
-    errors.push('Le sujet doit contenir au moins 3 caractères');
-  }
+    if (!formData.email || !emailregex.test(formData.email)) {
+        errors.push('Valid email is required.');
+    }
 
-  if (!formData.message || formData.message.trim().length < 10) {
-    errors.push('Le message doit contenir au moins 10 caractères');
-  }
+    if (!formData.message || formData.message.trim().length < 10) {
+        errors.push('Message must be at least 10 characters.');
+    }
 
-  return errors;
+    return errors;
 }
 
-// Fonction pour envoyer l'email
 export async function sendEmail(formData) {
-  try {
-    const response = await emailjs.send(
-      "service_oai4yuy", 
-      "template_opzcqvo", 
-      {
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-      }
-    );
-    
-    return { success: true, response };
-  } catch (error) {
-    console.error('Erreur EmailJS:', error);
-    return { success: false, error };
-  }
+    try {
+        const response = await emailjs.send(
+            "service_oai4yuy",
+            "template_opzcqvo",
+            {
+                name: formData.name,
+                email: formData.email,
+                message: formData.message,
+            }
+        );
+
+        return { success: true, response };
+    } catch (error) {
+        console.error('Email sending failed:', error);
+        return { success: false, error };
+    }
 }
 
 export default {
-  validateForm,
-  sendEmail
+    validateForm,
+    sendEmail
 };

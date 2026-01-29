@@ -1,191 +1,118 @@
 <template>
   <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Portfolio</h3>
-          <p>Développeur passionné créant des expériences web modernes.</p>
+    <div class="footer__container">
+      <div class="footer__content">
+        <div class="footer__brand">
+          <span class="footer__logo-bracket">&lt;</span>
+          Portfolio
+          <span class="footer__logo-bracket">/&gt;</span>
         </div>
-
-        <div class="footer-section">
-          <h4>Navigation</h4>
-          <ul class="footer-links">
-            <li><router-link to="/">Accueil</router-link></li>
-            <li><router-link to="/about">À propos</router-link></li>
-            <li><router-link to="/projects">Projets</router-link></li>
-            <li><router-link to="/contact">Contact</router-link></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <ul class="footer-links">
-            <li><a href="mailto:armel.giordanni@email.com">Email</a></li>
-            <li><a href="https://github.com/armel2003" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/armel-njikam-giordanni" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          </ul>
-        </div>
+        <p class="footer__copyright">
+          © {{ new Date().getFullYear() }} Portfolio. Tous droits réservés.
+        </p>
       </div>
-
-      <div class="footer-bottom">
-        <p>&copy; {{ currentYear }} Portfolio. Tous droits réservés.</p>
-        <p class="made-with">Fait avec <span class="heart">❤️</span> avec Vue.js</p>
+      
+      <div class="footer__social">
+        <a href="https://github.com/armel2003" target="_blank" class="footer__social-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/armel-njikam-giordanni/" class="footer__social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
       </div>
     </div>
   </footer>
 </template>
 
-<script>
-export default {
-  name: 'Footer',
-  data() {
-    return {
-      currentYear: new Date().getFullYear()
-    }
-  }
-}
-</script>
-
 <style scoped>
 .footer {
-  background: var(--dark-bg-secondary);
-  border-top: 2px solid var(--primary-color);
-  color: var(--text-color);
-  padding: 3rem 2rem 1rem;
-  margin-top: auto;
-  box-shadow: 0 -4px 20px rgba(196, 30, 58, 0.2);
+  padding: 3rem 3rem;
+  border-top: 1px solid hsla(0, 0%, 15%, 0.5);
+  margin-top: 5rem;
 }
 
-.footer-container {
+.footer__container {
   max-width: 1400px;
   margin: 0 auto;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 3rem;
-  margin-bottom: 2rem;
-}
-
-.footer-section h3 {
-  background: var(--gradient-gold-red);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.footer-section h4 {
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.footer-section p {
-  color: var(--text-secondary);
-  line-height: 1.8;
-  font-size: 0.95rem;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li {
-  margin-bottom: 0.8rem;
-}
-
-.footer-links a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: var(--transition);
-  display: inline-block;
-  position: relative;
-  padding-left: 20px;
-}
-
-.footer-links a::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--primary-color);
-  transition: var(--transition);
-}
-
-.footer-links a:hover {
-  color: var(--secondary-color);
-  transform: translateX(5px);
-}
-
-.footer-links a:hover::before {
-  color: var(--secondary-color);
-}
-
-.footer-bottom {
-  border-top: 1px solid var(--primary-color);
-  padding-top: 1.5rem;
-  text-align: center;
-}
-
-.footer-bottom p {
-  color: var(--text-secondary);
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-}
-
-.made-with {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer__brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.footer__logo-bracket {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.footer__copyright {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+
+.footer__social {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer__social-link {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  color: var(--text-secondary);
+  color: var(--muted-foreground);
+  border: 1px solid hsla(0, 7%, 62%, 0.5);
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-.heart {
-  color: var(--primary-color);
-  animation: heartbeat 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px var(--primary-color));
+.footer__social-link:hover {
+  color: var(--foreground);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  background: hsla(0, 7%, 62%, 0.5);
 }
 
-@keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
+.footer__social-link svg {
+  width: 20px;
+  height: 20px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .footer {
-    padding: 2rem 1rem 1rem;
+    padding: 2.5rem 1.5rem;
+    margin-top: 4rem;
   }
 
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .footer-section {
+  .footer__container {
+    flex-direction: column;
     text-align: center;
+    gap: 1.5rem;
   }
 
-  .footer-links a {
-    padding-left: 0;
-  }
-
-  .footer-links a::before {
-    display: none;
+  .footer__content {
+    align-items: center;
   }
 }
 </style>

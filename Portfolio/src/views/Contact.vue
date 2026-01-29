@@ -1,95 +1,114 @@
 <template>
   <section class="contact">
-    <div class="container">
-      <h2 class="section-title">Travaillons Ensemble</h2>
-      <div class="contact-content">
-        <div class="contact-form">
-          <form @submit.prevent="handleSubmit">
-            <div class="form-group">
-              <label for="name">Nom complet *</label>
-              <input 
-                type="text" 
-                id="name" 
-                v-model="form.name" 
-                required 
-                placeholder="Votre nom"
-              >
+    <!-- Background glow -->
+    <div class="glow-effect"></div>
+
+    <div class="contact-container">
+      <div class="contact-wrapper">
+        <!-- Header -->
+        <div class="header">
+          <p class="label">Contact</p>
+          <h2 class="title">
+            Travaillons <span class="text-gradient">ensemble</span>
+          </h2>
+        </div>
+
+        <div class="content-grid">
+          <!-- Contact info -->
+          <div class="info-section">
+            <p class="description">
+              Vous avez un projet en tête ? N'hésitez pas à me contacter 
+              pour discuter de vos idées et voir comment je peux vous aider.
+            </p>
+
+            <div class="contact-cards">
+              <!-- Email card -->
+              <div class="contact-card">
+                <div class="card-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="card-label">Email</p>
+                  <p class="card-value">armelgiordanni80@gmail.com</p>
+                </div>
+              </div>
+
+              <!-- Location card -->
+              <div class="contact-card">
+                <div class="card-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <p class="card-label">Localisation</p>
+                  <p class="card-value">France</p>
+                </div>
+              </div>
+
+              <!-- Téléphone card -->
+              <div class="contact-card">
+                <div class="card-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.21.38 2.39.73 3.5a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.58-1.58a2 2 0 0 1 2.11-.45c1.11.35 2.29.6 3.5.73a2 2 0 0 1 1.71 2.18Z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="card-label">Téléphone</p>
+                  <p class="card-value">+33 6 95 92 48 81</p>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="email">Adresse email *</label>
-              <input 
-                type="email" 
-                id="email" 
-                v-model="form.email" 
-                required 
-                placeholder="votre@email.com"
-              >
-            </div>
-            <div class="form-group">
-              <label for="subject">Sujet du projet</label>
-              <input 
-                type="text" 
-                id="subject" 
-                v-model="form.subject" 
-                placeholder="Ex: Création site e-commerce"
-              >
-            </div>
-            <div class="form-group">
-              <label for="message">Décrivez votre projet *</label>
-              <textarea 
-                id="message" 
-                v-model="form.message" 
-                required 
-                placeholder="Parlez-moi de votre projet, vos objectifs, votre budget et vos délais..."
-              ></textarea>
-            </div>
-            <button type="submit" class="submit-btn" :disabled="isSubmitting">
-              {{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}
-            </button>
+          </div>
+
+          <!-- Contact form -->
+          <form class="form" @submit.prevent="handleSubmit">
             <div v-if="submitMessage" :class="['submit-message', submitStatus]">
               {{ submitMessage }}
             </div>
+
+            <div class="form-field">
+              <input
+                type="text"
+                v-model="form.name"
+                placeholder="Votre nom"
+                :disabled="isSubmitting"
+                class="form-input"
+              />
+            </div>
+
+            <div class="form-field">
+              <input
+                type="email"
+                v-model="form.email"
+                placeholder="Votre email"
+                :disabled="isSubmitting"
+                class="form-input"
+              />
+            </div>
+
+            <div class="form-field">
+              <textarea
+                rows="4"
+                v-model="form.message"
+                placeholder="Votre message"
+                :disabled="isSubmitting"
+                class="form-input form-textarea"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="form-button" :disabled="isSubmitting">
+              <span>{{ isSubmitting ? 'Envoi en cours...' : 'Envoyer' }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+                <path d="m22 2-7 20-4-9-9-4Z"></path>
+                <path d="M22 2 11 13"></path>
+              </svg>
+            </button>
           </form>
-        </div>
-        <div class="contact-info">
-          <h3>Discutons de nos futures collaborations</h3>
-          <p>Vous avez une idée, un projet simplement ? Je serai ravi d'échanger avec vous pour comprendre les besoins et trouver de meilleures solutions.</p>
-          
-          <div class="contact-details">
-            <div class="contact-item">
-              <span class="contact-icon">📍</span>
-              <div>
-                <strong>Localisation</strong><br>
-                Paris, France
-              </div>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon">📧</span>
-              <div>
-                <strong>Email</strong><br>
-                armelgiordanni80@email.com
-              </div>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon">📱</span>
-              <div>
-                <strong>Téléphone</strong><br>
-                +33 6 95 92 48 81
-              </div>
-            </div>
-          </div>
-          
-          <div class="social-links">
-            <a href="https://github.com/armel2003" class="social-link" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/armel-njikam-giordanni" class="social-link" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="mailto:armel.giordanni@email.com" class="social-link" title="Email" aria-label="Email">
-               <i class="fa-solid fa-envelope"></i>
-            </a>
-          </div>
         </div>
       </div>
     </div>
@@ -140,7 +159,6 @@ export default {
           this.form = {
             name: '',
             email: '',
-            subject: '',
             message: ''
           }
           
@@ -166,252 +184,234 @@ export default {
 
 <style scoped>
 .contact {
-  padding: 4rem 2rem;
-  min-height: calc(100vh - 200px);
-  background: var(--dark-bg);
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.container {
+/* Background glow effect */
+.glow-effect {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  background: var(--muted);
+  opacity: 0.1;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.contact-container {
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.contact-wrapper {
+  max-width: 64rem;
   margin: 0 auto;
 }
 
-.section-title {
-  font-size: 3rem;
+/* Header */
+.header {
   text-align: center;
-  margin-bottom: 3rem;
-  background: var(--gradient-gold-red);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 700;
+  margin-bottom: 4rem;
 }
 
-.contact-content {
+.label {
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.title {
+  font-size: clamp(1.875rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+}
+
+/* Content grid */
+.content-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 3rem;
-  align-items: start;
 }
 
-.contact-form {
-  background: var(--dark-bg-secondary);
-  padding: 2.5rem;
-  border-radius: 15px;
-  border: 2px solid var(--dark-bg-tertiary);
-  box-shadow: var(--shadow-lg);
-  transition: border-color 0.3s ease;
+@media (min-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.contact-form:hover {
-  border-color: var(--primary-color);
+/* Info section */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.7rem;
-  color: var(--secondary-color);
-  font-weight: 600;
+.description {
+  color: var(--muted-foreground);
+  line-height: 1.7;
   font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 1rem;
-  background: var(--dark-bg);
-  border: 2px solid var(--dark-bg-tertiary);
-  border-radius: 8px;
-  font-size: 1rem;
-  color: var(--text-color);
-  font-family: inherit;
-  transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.2);
-  background: var(--dark-bg-tertiary);
-}
-
-.form-group textarea {
-  min-height: 150px;
-  resize: vertical;
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 1.2rem;
-  background: var(--gradient-secondary);
-  color: var(--dark-bg);
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.4s ease;
-  box-shadow: var(--shadow-gold);
-}
-
-.submit-btn:hover:not(:disabled) {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
-}
-
-.submit-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.submit-message {
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.submit-message.success {
-  background-color: rgba(66, 185, 131, 0.2);
-  color: var(--secondary-color);
-  border: 2px solid var(--secondary-color);
-}
-
-.submit-message.error {
-  background-color: rgba(196, 30, 58, 0.2);
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
-}
-
-.contact-info {
-  padding: 1rem;
-}
-
-.contact-info h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  background: var(--gradient-gold-red);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #2c3e50;
-}
-
-.contact-info p {
-  line-height: 1.8;
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-}
-
-.contact-details {
-  margin: 2rem 0;
+.contact-cards {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.contact-item {
+.contact-card {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
-  padding: 1.5rem;
-  background: var(--dark-bg-secondary);
-  border: 2px solid var(--dark-bg-tertiary);
-  border-radius: 10px;
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
 }
 
-.contact-item:hover {
-  transform: translateX(8px);
-  border-color: var(--primary-color);
-  box-shadow: var(--shadow-lg);
-}
-
-.contact-icon {
-  font-size: 2rem;
-  filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
-}
-
-.contact-item strong {
-  color: var(--secondary-color);
-  font-size: 1.05rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.contact-item div {
-  color: var(--text-secondary);
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.social-link {
+.card-icon {
+  width: 3rem;
+  height: 3rem;
+  background: var(--secondary);
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55px;
-  height: 55px;
-  background: var(--gradient-primary);
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 1.8rem;
-  transition: all 0.4s ease;
-  box-shadow: var(--shadow-md);
-  border: 2px solid transparent;
+  color: var(--foreground);
+  flex-shrink: 0;
 }
 
-.social-link:hover {
-  transform: translateY(-8px) rotate(360deg);
-  box-shadow: var(--shadow-gold);
-  border-color: var(--secondary-color);
-  background: var(--gradient-gold-red);
+.card-label {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin-bottom: 0.25rem;
 }
 
-.social-link i {
-  color: var(--dark-bg);
+.card-value {
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: hsla(0, 0%, 10%, 0.5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--foreground);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-input:focus {
+  border-color: hsla(0, 0%, 95%, 0.3);
+}
+
+.form-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+.form-button {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.form-button:hover:not(:disabled) {
+  background: hsla(0, 0%, 95%, 0.9);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.form-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.send-icon {
+  transition: transform 0.3s ease;
+}
+
+.form-button:hover:not(:disabled) .send-icon {
+  transform: translateX(4px);
+}
+
+/* Submit message */
+.submit-message {
+  padding: 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+  text-align: center;
+  animation: fade-in 0.3s ease;
+}
+
+.submit-message.success {
+  background: hsla(142, 76%, 36%, 0.2);
+  border: 1px solid hsla(142, 76%, 36%, 0.5);
+  color: hsl(142, 76%, 56%);
+}
+
+.submit-message.error {
+  background: hsla(0, 84%, 60%, 0.2);
+  border: 1px solid hsla(0, 84%, 60%, 0.5);
+  color: hsl(0, 84%, 70%);
 }
 
 /* Responsive */
-@media (max-width: 968px) {
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
-  
-  .contact-info {
-    order: -1;
-  }
-}
-
 @media (max-width: 768px) {
   .contact {
-    padding: 2rem 1rem;
+    padding: 5rem 0;
   }
-  
-  .section-title {
-    font-size: 2rem;
+
+  .header {
+    margin-bottom: 3rem;
   }
-  
-  .contact-form {
-    padding: 1.5rem;
-  }
-  
-  .contact-info h3 {
-    font-size: 1.5rem;
+
+  .content-grid {
+    gap: 2.5rem;
   }
 }
 </style>
